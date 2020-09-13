@@ -1,5 +1,6 @@
 package academy.learnprogramming.console;
 
+import academy.learnprogramming.Game;
 import academy.learnprogramming.config.AppConfig;
 import academy.learnprogramming.MessageGenerator;
 import academy.learnprogramming.NumberGenerator;
@@ -14,9 +15,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        log.info("Hello Info Logging");
+       // log.info("Hello Info Logging");
         log.info("Guess the number game");
-        log.debug("Hello Debug Logging");
+      //  log.debug("Hello Debug Logging");
 
         ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
@@ -28,8 +29,8 @@ public class Main {
 
         MessageGenerator messageGenerator = context.getBean(MessageGenerator.class);
 
-        String messageMainString = messageGenerator.getMainMessage("Main.class");
-        String messageResultString = messageGenerator.getResultMessage("Main.class");
+        String messageMainString = messageGenerator.getMainMessage();
+        String messageResultString = messageGenerator.getResultMessage();
 
         log.debug(messageMainString);
         log.debug(messageResultString);

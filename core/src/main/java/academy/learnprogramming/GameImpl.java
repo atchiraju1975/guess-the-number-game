@@ -69,22 +69,26 @@ public class GameImpl implements Game{
 
     @Override
     public void check() {
+        checkValidNumberRange();
+if (validNumberRange) {
+    if (guess > number) {
+        biggest = guess - 1;
+    }
 
-        if (guess > number) {
-            biggest = guess - 1;
-        }
-
-        if (guess < number) {
-            smallest = guess + 1;
-        }
-
+    if (guess < number) {
+        smallest = guess + 1;
+    }
+}
         remainingGuesses--;
 
     }
 
     @Override
     public boolean isValidNumberRange() {
-        return validNumberRange;
+
+      //  checkValidNumberRange();
+        log.debug("Guesses number Range is "+String.valueOf(validNumberRange));
+        return (validNumberRange);
     }
 
     @Override
@@ -100,7 +104,12 @@ public class GameImpl implements Game{
     //==private methods==//
 
     private void checkValidNumberRange(){
-        validNumberRange = (guess >= smallest) && (guess <= biggest);
+
+        log.debug("guessed value is" +  String.valueOf(guess));
+        log.debug("smallest is " + String.valueOf(smallest));
+        log.debug("biggest is " + String.valueOf(biggest));
+        validNumberRange = ((guess >= smallest) && (guess <= biggest));
+
     }
 
 }
