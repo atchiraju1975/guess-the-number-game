@@ -1,9 +1,9 @@
 package academy.learnprogramming.console;
 
-import academy.learnprogramming.Game;
+import academy.learnprogramming.NumberGenerator;
 import academy.learnprogramming.config.AppConfig;
 import academy.learnprogramming.MessageGenerator;
-import academy.learnprogramming.NumberGenerator;
+import academy.learnprogramming.config.GameConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -15,25 +15,11 @@ public class Main {
 
     public static void main(String[] args) {
 
-       // log.info("Hello Info Logging");
+
         log.info("Guess the number game");
-      //  log.debug("Hello Debug Logging");
 
-        ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(GameConfig.class);
 
-        NumberGenerator numberGenerator = context.getBean(NumberGenerator.class);
-
-        int number = numberGenerator.next();
-
-        log.info("number = {}", number);
-
-        MessageGenerator messageGenerator = context.getBean(MessageGenerator.class);
-
-        String messageMainString = messageGenerator.getMainMessage();
-        String messageResultString = messageGenerator.getResultMessage();
-
-        log.debug(messageMainString);
-        log.debug(messageResultString);
         context.close();
     }
 

@@ -1,21 +1,42 @@
 package academy.learnprogramming;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Random;
 
+@Component
 public class NumberGeneratorImpl implements NumberGenerator{
 
     private final Random random = new Random();
-    private int maxNumber = 100;
 
-    @Override
-    public int next() {
-            return random.nextInt(maxNumber);
+    private final int maxNumber;
+    private final int minNumber;
+
+    @Autowired
+    public NumberGeneratorImpl(@MaxNumber int maxNumber, @MinNumber int minNumber) {
+        this.maxNumber = maxNumber;
+        this.minNumber = minNumber;
     }
 
     @Override
-    public int getMaxNumber() {
+    public int next()
+    {
+
+        return ((random.nextInt(maxNumber - minNumber)) + minNumber);
+
+      //  return random.nextInt(minNumber,maxNumber);
+    }
+
+    @Override
+    public int getMaxNumber()
+    {
         return maxNumber;
+    }
+
+    @Override
+    public int getMinNumber()
+    {
+        return minNumber;
     }
 }

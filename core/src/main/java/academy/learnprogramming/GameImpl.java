@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+@Component
 public class GameImpl implements Game{
 
     //== constants at the top ==//
@@ -12,15 +13,20 @@ public class GameImpl implements Game{
     private static final Logger log = LoggerFactory.getLogger(Game.class);
 
     //== variables ==//
-    @Autowired
     private NumberGenerator numberGenerator;
-    private int guessCount = 10;
+    private int guessCount;
     private int number;
     private int guess;
     private int remainingGuesses;
     private int smallest;
     private int biggest;
     private boolean validNumberRange = true;
+
+    @Autowired
+    public GameImpl(NumberGenerator numberGenerator, @GuessCount int guessCount) {
+        this.numberGenerator = numberGenerator;
+        this.guessCount = guessCount;
+    }
 
     //==public methods to the top==//
 
@@ -55,6 +61,10 @@ public class GameImpl implements Game{
         return remainingGuesses;
     }
 
+    public int getGuessCount() {
+        return guessCount;
+    }
+
     @Override
     public void reset() {
 
@@ -62,8 +72,9 @@ public class GameImpl implements Game{
         guess = 0;
         remainingGuesses = guessCount;
         biggest = numberGenerator.getMaxNumber();
+        smallest = numberGenerator.getMinNumber();
         number = numberGenerator.next();
-        log.debug("the number is {}" , number);
+     //   log.debug("the number is {}" , number);
 
     }
 
