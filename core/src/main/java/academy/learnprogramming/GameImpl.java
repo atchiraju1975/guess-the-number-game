@@ -13,8 +13,8 @@ public class GameImpl implements Game{
     private static final Logger log = LoggerFactory.getLogger(Game.class);
 
     //== variables ==//
-    private NumberGenerator numberGenerator;
-    private int guessCount;
+    private final NumberGenerator numberGenerator;
+    private final int guessCount;
     private int number;
     private int guess;
     private int remainingGuesses;
@@ -74,7 +74,7 @@ public class GameImpl implements Game{
         biggest = numberGenerator.getMaxNumber();
         smallest = numberGenerator.getMinNumber();
         number = numberGenerator.next();
-     //   log.debug("the number is {}" , number);
+       log.debug("the number is {}" , number);
 
     }
 
