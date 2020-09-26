@@ -1,10 +1,14 @@
 package academy.learnprogramming;
 
+import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Random;
 
+@Slf4j
+@Getter
 @Component
 public class NumberGeneratorImpl implements NumberGenerator{
 
@@ -23,20 +27,21 @@ public class NumberGeneratorImpl implements NumberGenerator{
     public int next()
     {
 
-        return ((random.nextInt(maxNumber - minNumber)) + minNumber);
+        int nextRandomGenerated = (random.nextInt(maxNumber - minNumber)) + minNumber;
+        log.debug("Random Number Generated is = " + nextRandomGenerated);
+        return (nextRandomGenerated);
 
-      //  return random.nextInt(minNumber,maxNumber);
     }
 
-    @Override
-    public int getMaxNumber()
-    {
-        return maxNumber;
-    }
-
-    @Override
-    public int getMinNumber()
-    {
-        return minNumber;
-    }
+//    @Override
+//    public int getMaxNumber()
+//    {
+//        return maxNumber;
+//    }
+//
+//    @Override
+//    public int getMinNumber()
+//    {
+//        return minNumber;
+//    }
 }
