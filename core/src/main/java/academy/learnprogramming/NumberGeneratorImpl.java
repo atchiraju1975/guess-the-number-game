@@ -1,5 +1,6 @@
 package academy.learnprogramming;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import java.util.Random;
 @Component
 public class NumberGeneratorImpl implements NumberGenerator{
 
+    @Getter(AccessLevel.NONE)
     private final Random random = new Random();
 
     private final int maxNumber;
