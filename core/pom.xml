@@ -26,8 +26,7 @@
     <dependency>
         <groupId>org.projectlombok</groupId>
         <artifactId>lombok</artifactId>
-        <scope>system</scope>
-        <systemPath>${basedir}/../lib/lombok-edge.jar</systemPath>
+        <scope>provided</scope>
     </dependency>
 </dependencies>
 </project>
